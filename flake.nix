@@ -14,15 +14,16 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-      in {
-        packages.default = pkgs.stdenv.mkDerivation rec {
+      in rec {
+        packages.default = packages.jdtls;
+        packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdt-language-server";
-          version = "{{version}}";
-          timestamp = "{{timestamp}}";
+          version = "1.21.0";
+          timestamp = "202303161431";
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "{{hash}}";
+            sha256 = "sha256-c8RDSvOgLbl05LDNelKgQXucbJnjJ7GVcut6mVT6GjA=";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
@@ -36,7 +37,7 @@
             mkdir -p $out/bin $out/libexec
             cp -a jdt-language-server $out/libexec
             makeWrapper $out/libexec/jdt-language-server/bin/jdtls $out/bin/jdtls \
-              --prefix PATH : ${pkgs.lib.makeBinPath [pkgs.python3Minimal]}
+              --prefix PATH : ${pkgs.lib.makeBinPath [pkgs.jdk pkgs.python3Minimal]}
           '';
 
           dontUnpack = true;
