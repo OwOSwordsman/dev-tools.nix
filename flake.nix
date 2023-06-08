@@ -18,12 +18,12 @@
         packages.default = packages.jdtls;
         packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdt-language-server";
-          version = "1.21.0";
-          timestamp = "202303161431";
+          version = "1.24.0";
+          timestamp = "202306011728";
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-c8RDSvOgLbl05LDNelKgQXucbJnjJ7GVcut6mVT6GjA=";
+            sha256 = "sha256-7XOk9ocKHfYYiUUGp8jac0xD4cYyXSz3XLk0wPnC+Wg=";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
@@ -46,7 +46,14 @@
         };
 
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [python3Minimal pyright];
+          packages = with pkgs; [
+            python3
+            python3Packages.icecream
+            python3Packages.python-lsp-server
+            python3Packages.python-lsp-ruff
+            python3Packages.python-lsp-black
+            python3Packages.pylsp-mypy
+          ];
         };
       }
     );

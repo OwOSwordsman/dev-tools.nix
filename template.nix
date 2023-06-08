@@ -23,7 +23,7 @@
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = pkgs.lib.fakeHash;
+            sha256 = "sha256-{{hash}}";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
@@ -46,7 +46,14 @@
         };
 
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [python3Minimal pyright];
+          packages = with pkgs; [
+            python3
+            python3Packages.icecream
+            python3Packages.python-lsp-server
+            python3Packages.python-lsp-ruff
+            python3Packages.python-lsp-black
+            python3Packages.pylsp-mypy
+          ];
         };
       }
     );
