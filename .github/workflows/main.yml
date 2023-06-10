@@ -1,5 +1,6 @@
 name: Update jdtls
 on:
+  workflow_dispatch:
   schedule:
     - cron: '13 4 * * *'
 jobs:
