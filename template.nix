@@ -53,6 +53,7 @@
             python3Packages.python-lsp-ruff
             python3Packages.python-lsp-black
             python3Packages.pylsp-mypy
+            ruff
             nodePackages.yaml-language-server
             yamlfmt
           ];

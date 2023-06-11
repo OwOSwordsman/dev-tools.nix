@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '13 4 * * *'
+  push:
+    paths-ignore:
+      - "flake.nix"
 jobs:
   check-updates:
     name: Update jdtls
@@ -18,8 +21,9 @@ jobs:
         run: python3 updater.py
       - name: Push updates
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name Github Actions
+          git config user.email actions@github.com
           git add flake.nix
           git commit -m "chore: update jdtls"
           git push
+          exit 0
