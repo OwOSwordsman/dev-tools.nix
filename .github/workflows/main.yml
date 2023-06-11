@@ -20,10 +20,10 @@ jobs:
       - name: Run script
         run: python3 updater.py
       - name: Push updates
+        continue-on-error: true
         run: |
           git config user.name Github Actions
           git config user.email actions@github.com
           git add flake.nix
           git commit -m "chore: update jdtls"
           git push
-          exit 0
