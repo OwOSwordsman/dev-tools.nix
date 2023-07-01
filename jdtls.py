@@ -47,7 +47,7 @@ def get_hash(version: Version) -> bytes:
 
 
 def generate_flake(version: Version, hash: bytes) -> None:
-    with open("template.nix", "r") as template:
+    with open("flake.nix", "r") as template:
         flake = (
             template.read()
             .replace("{{jdtls-version}}", version.identifier)
