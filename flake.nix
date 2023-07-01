@@ -14,8 +14,7 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-      in rec {
-        packages.default = packages.jdtls;
+      in {
         packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdt-language-server";
           version = "1.25.0";
@@ -46,17 +45,7 @@
         };
 
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            python3
-            python3Packages.icecream
-            python3Packages.python-lsp-server
-            python3Packages.python-lsp-ruff
-            python3Packages.python-lsp-black
-            python3Packages.pylsp-mypy
-            ruff
-            nodePackages.yaml-language-server
-            yamlfmt
-          ];
+          packages = with pkgs; [python3];
         };
       }
     );
