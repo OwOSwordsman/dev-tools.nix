@@ -2,13 +2,13 @@ name: Update jdtls
 on:
   workflow_dispatch:
   schedule:
-    - cron: '13 4 * * *'
+    - cron: "13 4 * * *"
   push:
     paths-ignore:
       - "flake.nix"
 jobs:
   check-updates:
-    name: Update jdtls
+    name: Update packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,14 +16,14 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-      - name: Run script
-        run: python3 updater.py
+          python-version: "3.10"
+      - name: Update jdtls
+        run: python3 jdtls.py
       - name: Push updates
         continue-on-error: true
         run: |
           git config user.name Github Actions
           git config user.email actions@github.com
           git add flake.nix
-          git commit -m "chore: update jdtls"
+          git commit -m "chore: update packages"
           git push

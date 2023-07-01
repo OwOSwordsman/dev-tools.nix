@@ -14,16 +14,15 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-      in rec {
-        packages.default = packages.jdtls;
+      in {
         packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdt-language-server";
-          version = "{{version}}";
-          timestamp = "{{timestamp}}";
+          version = "{{jdtls-version}}";
+          timestamp = "{{jdtls-timestamp}}";
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-{{hash}}";
+            sha256 = "sha256-{{jdtls-hash}}";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
@@ -46,17 +45,7 @@
         };
 
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
-            python3
-            python3Packages.icecream
-            python3Packages.python-lsp-server
-            python3Packages.python-lsp-ruff
-            python3Packages.python-lsp-black
-            python3Packages.pylsp-mypy
-            ruff
-            nodePackages.yaml-language-server
-            yamlfmt
-          ];
+          packages = with pkgs; [python3];
         };
       }
     );

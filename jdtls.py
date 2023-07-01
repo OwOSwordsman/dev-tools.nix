@@ -50,9 +50,9 @@ def generate_flake(version: Version, hash: bytes) -> None:
     with open("template.nix", "r") as template:
         flake = (
             template.read()
-            .replace("{{version}}", version.identifier)
-            .replace("{{timestamp}}", version.timestamp)
-            .replace("{{hash}}", hash.decode("utf-8"))
+            .replace("{{jdtls-version}}", version.identifier)
+            .replace("{{jdtls-timestamp}}", version.timestamp)
+            .replace("{{jdtls-hash}}", hash.decode("utf-8"))
         )
 
     with open("flake.nix", "w") as f:
