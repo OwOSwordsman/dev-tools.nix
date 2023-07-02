@@ -36,7 +36,7 @@
             mkdir -p $out/bin $out/libexec
             cp -a jdt-language-server $out/libexec
             makeWrapper $out/libexec/jdt-language-server/bin/jdtls $out/bin/jdtls \
-              --set PATH ${pkgs.lib.makeBinPath [pkgs.jdk pkgs.python3Minimal]}
+              --set PATH ${pkgs.lib.makeBinPath [pkgs.jdk17_headless pkgs.python3Minimal]}
           '';
 
           dontUnpack = true;
@@ -58,7 +58,7 @@
           installPhase = ''
             mkdir -p $out/bin $out/libexec/junit
             cp ${jar} $out/libexec/junit/junit-platform-console-standalone.jar
-            makeWrapper ${pkgs.jdk}/bin/java $out/bin/junit \
+            makeWrapper ${pkgs.jdk17_headless}/bin/java $out/bin/junit \
               --add-flags "-jar" \
               --add-flags "$out/libexec/junit/junit-platform-console-standalone.jar"
           '';
