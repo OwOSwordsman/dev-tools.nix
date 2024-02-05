@@ -46,11 +46,11 @@
 
         packages.junit = pkgs.stdenv.mkDerivation rec {
           pname = "junit";
-          version = "1.10.1";
+          version = "1.10.2";
 
           jar = pkgs.fetchurl {
             url = "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/${version}/junit-platform-console-standalone-${version}.jar";
-            sha512 = "sha512-tNem7QjXyKEitZm0RLzgcIaQpBpJaO1xusrqQCzyBOIHPjUVLY2RWxJGW4A4qMmdJ2KbRt432Q3QMyosFgZfEg==";
+            sha512 = "sha512-YXVB4mWwDGQuWwscX2ytuHjthNDvNE2Cdaf93Tg/yI9IwXfFHon0PTATTsyMan9D7E0vr3IQ675ahLRE8ZUn8Q==";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
