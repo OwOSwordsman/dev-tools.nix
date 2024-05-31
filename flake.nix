@@ -17,12 +17,12 @@
       in {
         packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdtls";
-          version = "1.35.0";
-          timestamp = "202404251256";
+          version = "1.36.0";
+          timestamp = "202405301306";
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-ATncoa4mSDTDYg18udvjMQGGIhpC/0ClZzlCwHsIDxU=";
+            sha256 = "sha256-Ao4nTQb0phytT/1W+J70FKj2VhPG0F2UZ2Ubf7A9rns=";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
