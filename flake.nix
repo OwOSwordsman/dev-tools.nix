@@ -17,12 +17,12 @@
       in {
         packages.jdtls = pkgs.stdenv.mkDerivation rec {
           pname = "jdtls";
-          version = "1.36.0";
-          timestamp = "202405301306";
+          version = "1.37.0";
+          timestamp = "202406271335";
 
           src = pkgs.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-Ao4nTQb0phytT/1W+J70FKj2VhPG0F2UZ2Ubf7A9rns=";
+            sha256 = "sha256-0EzZ9N9FzoWunPSVMMcqGjJLFO7nR68m4zdFAONrW9A=";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
@@ -46,11 +46,11 @@
 
         packages.junit = pkgs.stdenv.mkDerivation rec {
           pname = "junit";
-          version = "1.10.2";
+          version = "1.10.3";
 
           jar = pkgs.fetchurl {
             url = "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/${version}/junit-platform-console-standalone-${version}.jar";
-            sha512 = "sha512-YXVB4mWwDGQuWwscX2ytuHjthNDvNE2Cdaf93Tg/yI9IwXfFHon0PTATTsyMan9D7E0vr3IQ675ahLRE8ZUn8Q==";
+            sha512 = "sha512-jWwsKrVaY3YG249by1owhv5wdcua/nQHo4zXjVwMoU7hUm3tAA6VFqBpdm+IrHHeszwOnffmdG5KkgBDENSVkg==";
           };
 
           nativeBuildInputs = with pkgs; [makeWrapper];
