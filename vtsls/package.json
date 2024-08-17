@@ -1,0 +1,9 @@
+{
+  "name": "vtsls",
+  "version": "0.1.0",
+  "bin": "src/index.js",
+  "private": true,
+  "dependencies": {
+    "@vtsls/language-server": "0.2.5"
+  }
+}
